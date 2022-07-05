@@ -112,11 +112,11 @@ jobs:
       # This step also uses some env variables taken from the repo secrets. See the section 'Setup Android Keystore' below.
       - name: Gluon Build
         run: mvn -Pandroid gluonfx:build gluonfx:package
-        env:
-          GLUON_ANDROID_KEYSTOREPATH: ${{ steps.android_keystore_file.outputs.filePath }}
-          GLUON_ANDROID_KEYSTORE_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYSTORE_PASSWORD }}
-          GLUON_ANDROID_KEYALIAS: ${{ secrets.GLUON_ANDROID_KEYALIAS }}
-          GLUON_ANDROID_KEYALIAS_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYALIAS_PASSWORD }}
+#        env:
+#          GLUON_ANDROID_KEYSTOREPATH: ${{ steps.android_keystore_file.outputs.filePath }}
+#          GLUON_ANDROID_KEYSTORE_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYSTORE_PASSWORD }}
+#          GLUON_ANDROID_KEYALIAS: ${{ secrets.GLUON_ANDROID_KEYALIAS }}
+#          GLUON_ANDROID_KEYALIAS_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYALIAS_PASSWORD }}
 
       # Create staging directory in which the apk will be copied
       - name: Make staging directory
@@ -134,10 +134,10 @@ jobs:
           path: staging
 
       # Upload the aab to the Google Play Store. See the section below.
-      - name: Upload to Google Play
-        uses: r0adkll/upload-google-play@v1.0.15
-        with:
-          serviceAccountJsonPlainText: ${{ secrets.GLUON_ANDROID_SERVICE_ACCOUNT_JSON }}
-          packageName: com.jfx
-          releaseFiles: target/gluonfx/aarch64-android/gvm/HelloGluon.aab
-          track: beta
+#      - name: Upload to Google Play
+#        uses: r0adkll/upload-google-play@v1.0.15
+#        with:
+#          serviceAccountJsonPlainText: ${{ secrets.GLUON_ANDROID_SERVICE_ACCOUNT_JSON }}
+#          packageName: com.jfx
+#          releaseFiles: target/gluonfx/aarch64-android/gvm/HelloGluon.aab
+#          track: beta
