@@ -8,36 +8,36 @@ on:
 
 jobs:
 
-  raspbarry-pi-build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup Gluon's GraalVM
-        uses: gluonhq/setup-graalvm@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Install libraries
-        run: |
-          sudo apt-get update
-          sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
-          sudo apt install g++-aarch64-linux-gnu
-      - name: Make staging directory
-        run: mkdir staging
-
-      - name: Gluon Build
-        run: mvn -Ppi gluonfx:build gluonfx:package
-
-      - name: Copy native image to staging
-        run: cp -r target/gluonfx/aarch64-linux/ShallVTalk* staging
-
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: ShallVTalk-Raspberry-Pi
-          path: staging
-          retention-days: 1
+#  raspbarry-pi-build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#
+#      - name: Setup Gluon's GraalVM
+#        uses: gluonhq/setup-graalvm@master
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#
+#      - name: Install libraries
+#        run: |
+#          sudo apt-get update
+#          sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
+#          sudo apt install g++-aarch64-linux-gnu
+#      - name: Make staging directory
+#        run: mkdir staging
+#
+#      - name: Gluon Build
+#        run: mvn -Ppi gluonfx:build gluonfx:package
+#
+#      - name: Copy native image to staging
+#        run: cp -r target/gluonfx/aarch64-linux/ShallVTalk* staging
+#
+#      - name: Upload
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: ShallVTalk-Raspberry-Pi
+#          path: staging
+#          retention-days: 1
 
   windows-build:
     runs-on: windows-latest
@@ -63,12 +63,12 @@ jobs:
 
       - name: Copy native bundles to staging
         run: |
-          cp -r target\gluonfx\x86_64-windows\ShallVTalk.exe staging
-          cp -r target\gluonfx\x86_64-windows\ShallVTalk-1.0.msi staging
+          cp -r target\gluonfx\x86_64-windows\Mes.exe staging
+          cp -r target\gluonfx\x86_64-windows\Mes-1.0.msi staging
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          name: ShallVTalk-Windows
+          name: Mes-Windows
           path: staging
           retention-days: 1
 
@@ -130,7 +130,7 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          name: Package
+          name: Mes
           path: staging
 
       # Upload the aab to the Google Play Store. See the section below.
