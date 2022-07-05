@@ -28,7 +28,7 @@ jobs:
         run: cp -r target/image/* staging
       - uses: actions/upload-artifact@v2
         with:
-          name: VTalk-Linux
+          name: Mes-Linux
           path: staging
           retention-days: 1
 
@@ -52,7 +52,7 @@ jobs:
         run: cp -r target/image/* staging
       - uses: actions/upload-artifact@v2
         with:
-          name: VTalk-macOSX
+          name: Mes-macOSX
           path: staging
           retention-days: 1
 
@@ -76,6 +76,6 @@ jobs:
         run: cp -r target\image\* staging
       - uses: actions/upload-artifact@v2
         with:
-          name: VTalk-Windows
+          name: Mes-Windows
           path: staging
           retention-days: 1
