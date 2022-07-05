@@ -11,7 +11,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         WebView webView = new WebView();
-        webView.getEngine().load("http://mes.juyi.com.cn/mobile");
+        webView.getEngine().load("http://mes.juyi.com.cn:55555/mobile");
         Scene scene = new Scene(webView);
         primaryStage.setScene(scene);
         primaryStage.show();

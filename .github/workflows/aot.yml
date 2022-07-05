@@ -132,7 +132,7 @@ jobs:
         with:
           name: Mes
           path: staging
-          retation-days: 1
+          retention-days: 1
 
       # Upload the aab to the Google Play Store. See the section below.
 #      - name: Upload to Google Play
